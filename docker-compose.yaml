@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    dashboard-frontend:
+        image: datawake/dashboard-frontend:0.0.1
+        build:
+            context: .
+            args:
+                - SERVER_URL_CALC_API=${CALC_API_URL:-http://localhost:8000}
+        container_name: dashboard-frontend
+        ports:
+            - '8066:5173'
+        volumes:
+            - '/var/lib/jenkins/workspace/certificado:/app/certificado'
+        # environment:
+        # SERVER_URL_CALC_API: 'https://datadriven.datawake.com.br:8065'
